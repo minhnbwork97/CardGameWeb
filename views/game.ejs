@@ -1,0 +1,288 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Đánh Bài Online Miễn Phí</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://www.trungtamtinhoc.edu.vn/api/snowstorm.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/game/js/game.js"></script>
+  <img style="position:fixed;z-index:9999;top:0;left:0" src="/img/top-left.png" />
+  <img style="position:fixed;z-index:9999;top:0;right:0" src="/img/top-right.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="/game/css/game.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+</head>
+<div class="top">
+  <button onclick="leave(1)" id="leaveBtn"><img src="/img/exit_icon.png"></button>
+  <img id="icon" src="/img/Avatar/default.jpg" =>
+  <p id="username"></p>
+  <img id="coin-icon" src="/img/coin.png">
+  <p id="money"></p>
+</div>
+
+<body class=home-body>
+  <div class="reflink">
+    <a target="_blank" href="https://www.microsoft.com/vi-vn/store/b/home"><button style="left:1085px;top:10px;"><img src="/img/window.png"></button></a>
+    <a target="_blank" href="https://www.apple.com/itunes/"><button style="left:1025px;top:10px;"><img src="/img/appstore.png"></button></a>
+    <a target="_blank" href="https://play.google.com/store"><button style="left:965px;top:10px;"><img src="/img/chplay.png"></button></a>
+    <form action="/charge" method="POST" style="position: absolute; left: 900px;top:10px;">
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_9YAcFToKQ9oBAIJDDvo4Vyrq" data-amount="2000" data-name="Nạp Thẻ" data-description="Nạp 200000$" data-currency="usd" data-email="da2Team@gmail.com">
+      </script>
+      <input type="hidden" name="chargeAmount" value="2000">
+    </form>
+    <img src="/img/rank_icon.png" onclick="getRankList();" style="width: 50px;height: 50px;margin-left: 840px;margin-top: -60px;cursor: pointer;">
+  </div>
+
+  <button id="gift" onClick="gift()" style="float:right;"><img src= "/img/giphy.gif" width="100" height="100"></button>
+  <div class="gameButton">
+    <button id="co_up" onclick="gameNotAvaivable()" style="left:250px; top: 110px;"><img src= "/img/co_up.png"></button>
+    <button id="tlmn_dem_la" onclick="gameNotAvaivable()" style="left:425px; top: 110px;"><img src= "/img/TLMN_dem_la.png"></button>
+    <button id="sam" onclick="gameNotAvaivable()" style="left:600px; top: 110px;"><img src= "/img/sam.png"></button>
+    <button id="poker" onclick="gameNotAvaivable()" style="left:775px; top: 110px;"><img src= "/img/poker.png"></button>
+    <button id="lieng" onclick="gameNotAvaivable()" style="left:950px; top: 110px;"><img src= "/img/lieng.png"></button>
+    <button id="co_tuong" onclick="gameNotAvaivable()" style="left:250px; top: 300px;"><img src= "/img/co_tuong.png"></button>
+    <button id="tien_len_mien_nam" onclick="gameNotAvaivable()" style="left:425px; top: 300px;"><img src= "/img/TLMN.png"></button>
+    <button id="phom" onclick="gameNotAvaivable()" style="left:600px; top: 300px;"><img src= "/img/phom.png"></button>
+    <button id="mau_binh" onclick="gameNotAvaivable()" style="left:775px; top: 300px;"><img src= "/img/mau_binh.png"></button>
+    <button id="xi_dach" style="left:950px; top: 300px;"><img src= "/img/xi_dach.png"></button>
+  </div>
+
+  <div id="gameInter">
+    <div id="listRoomBJ">
+      <img onclick="joinRoom(1)" style="padding: 10px 0px 0px 70px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 110px"></p>
+      <img onclick="joinRoom(2)" style="padding: 10px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 290px"></p>
+      <img onclick="joinRoom(3)" style="padding: 10px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 470px"></p>
+      <img onclick="joinRoom(4)" style="padding: 10px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 650px"></p>
+      <img onclick="joinRoom(5)" style="padding: 10px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 830px"></p>
+      <img onclick="joinRoom(6)" style="padding: 30px 0px 0px 70px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 110px"></p>
+      <img onclick="joinRoom(7)" style="padding: 30px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 290px"></p>
+      <img onclick="joinRoom(8)" style="padding: 30px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 470px"></p>
+      <img onclick="joinRoom(9)" style="padding: 30px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 650px"></p>
+      <img onclick="joinRoom(10)" style="padding: 30px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 830px"></p>
+      <img onclick="joinRoom(11)" style="padding: 30px 0px 0px 70px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 110px"></p>
+      <img onclick="joinRoom(12)" style="padding: 30px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 290px"></p>
+      <img onclick="joinRoom(13)" style="padding: 30px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 470px"></p>
+      <img onclick="joinRoom(14)" style="padding: 30px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 650px"></p>
+      <img onclick="joinRoom(15)" style="padding: 30px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 830px"></p>
+      <img onclick="joinRoom(16)" style="padding: 30px 0px 0px 70px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 110px"></p>
+      <img onclick="joinRoom(17)" style="padding: 30px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 290px"></p>
+      <img onclick="joinRoom(18)" style="padding: 30px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 470px"></p>
+      <img onclick="joinRoom(19)" style="padding: 30px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 650px"></p>
+      <img onclick="joinRoom(20)" style="padding: 30px 0px 0px 50px" src="/img/ban_0_nguoi.png">
+      <p style="padding-left: 830px"></p>
+    </div>
+
+    <div id="game">
+      <table align="center" border="0;" cellpadding="0" cellspacing="10">
+        <tr>
+          <td>
+            <div style="position: relative; width: 1000px; height: 508px">
+              <div id='User0' class='user0'>
+                <div class='name' style="left:320px; top: 470px;">
+                </div>
+                <div><img class="avatar" style="left: 310px; top: 385px;"></div>
+                <span class="plmoney" style="left: 320px;top: 490px"></span>
+                <img style="left: 380px; top: 320px;">
+                <img style="left: 400px; top: 320px;">
+                <img style="left: 420px; top: 320px;">
+                <img style="left: 440px; top: 320px;">
+                <img style="left: 460px; top: 320px;">
+                <img class="avatarAdd" style="left: 285px; top: 345px;">
+              </div>
+              <div id='User1' class='user1'>
+                <div class='name' style="left: 830px; top: 315px;">
+                </div>
+                <div><img class="avatar" onclick="kick(1)" style=" left: 820px; top: 230px;"></div>
+                <span class="plmoney" style="left: 830px;top: 335px"></span>
+                <img style="left: 670px; top: 250px;">
+                <img style="left: 690px; top: 250px;">
+                <img style="left: 710px; top: 250px;">
+                <img style="left: 730px; top: 250px;">
+                <img style="left: 750px; top: 250px;">
+                <img class="avatarAdd" onclick="kick(1)" style=" left: 795px; top: 190px;">
+              </div>
+              <div id='User2' class='user2'>
+                <div class='name' style="left: 320px; top: 115px;">
+                </div>
+                <img class="avatar" onclick="kick(2)" style=" left: 310px; top: 30px;">
+                <span class="plmoney" style="left: 320px;top: 135px"></span>
+                <img style="left: 380px; top: 150px;">
+                <img style="left: 400px; top: 150px;">
+                <img style="left: 420px; top: 150px;">
+                <img style="left: 440px; top: 150px;">
+                <img style="left: 460px; top: 150px;">
+                <img class="avatarAdd" onclick="kick(2)" style=" left: 285px; top: -10px;">
+              </div>
+              <div id='User3' class='user3'>
+                <div class='name' style="top: 315px;">
+                </div>
+                <img class="avatar" onclick="kick(3)" style=" left: -10px; top: 230px;">
+                <span class="plmoney" style="top: 335px"></span>
+                <img style="left: 100px; top: 250px;">
+                <img style="left: 120px; top: 250px;">
+                <img style="left: 140px; top: 250px;">
+                <img style="left: 160px; top: 250px;">
+                <img style="left: 180px; top: 250px;">
+                <img class="avatarAdd" onclick="kick(3)" style=" left: -35px; top: 190px;">
+              </div>
+              <div class='name' id="RoomMessage" style=" left: 380px; top: 250px; text-align:center; font-size:200%"></div>
+              <div class="readyBtn">
+                <img src="/img/ready.png">
+                <div class="centered"></div>
+              </div>
+              <div class="bet">
+                <button class="dropbtn">Đặt cược: <span>200</span>$</button>
+                <div id="betValue" class="bet-content">
+                  <a class="betActivate" href="#">200</a>
+                  <a href="#">300</a>
+                  <a href="#">500</a>
+                  <a href="#">1,000</a>
+                  <a href="#">2,000</a>
+                  <a href="#">3,000</a>
+                  <a href="#">5,000</a>
+                  <a href="#">10,000</a>
+                  <a href="#">20,000</a>
+                </div>
+              </div>
+            </div>
+            <div class="row pad-top pad-bottom pos">
+              <div class="col-lg-2 col-md-2 col-sm-2">
+                <div class="chat-box-div">
+                  <div class="chat-box-head">
+                    CHAT BOX
+                  </div>
+                  <div class="panel-body chat-box-main">
+                    <div class="chat-box-left" id="chatbox">
+                    </div>
+                    <hr class="hr-clas" />
+                  </div>
+                  <div class="chat-box-footer">
+                    <div class="input-group">
+                      <input type="text" id="chatField" class="form-control" placeholder="Enter Text Here...">
+                      <span class="input-group-btn">
+      	<button class="btn btn-info" id = "chatButton" type="button">SEND</button>
+      	</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+            <button id="btnHit" class="button" style="left: 750px; top: 437px;"> Rút </button>
+            <button id="btnStand" class="button" style="left: 850px; top: 437px;"> Giữ </button>
+          </td>
+        </tr>
+        <tr>
+          <td align="center"><span id="message"></span></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  </div>
+
+  <div id="moneyRank">
+    <table class="tidy_table">
+      <thead>
+        <tr>
+          <th>Thứ Hạng</th>
+          <th>Tên</th>
+          <th>Ngân Lượng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><a></a></td>
+          <td><p></p></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><a></a></td>
+          <td><p></p></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><a></a></td>
+          <td><p></p></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><a></a></td>
+          <td><p></p></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><a></a></td>
+          <td><p></p></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><a></a></td>
+          <td><p></p></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><a></a></td>
+          <td><p></p></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><a></a></td>
+          <td><p></p></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><a></a></td>
+          <td><p></p></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><a></a></td>
+          <td><p></p></td>
+        </tr>
+        <tr>
+          <td>.......</td>
+          <td>.......</td>
+          <td>.......</td>
+        </tr>
+        <tr>
+          <td><span></span></td>
+          <td><a></a></td>
+          <td><p></p></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>

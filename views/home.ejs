@@ -1,0 +1,187 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Đánh Bài Online Miễn Phí</title>
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://www.trungtamtinhoc.edu.vn/api/snowstorm.js"></script>
+  <script src="/home/js/index.js"></script>
+  <img style="position:fixed;z-index:9999;top:0;left:0" src="/img/top-left.png" />
+  <img style="position:fixed;z-index:9999;top:0;right:0" src="/img/top-right.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="/home/css/style.css">
+
+</head>
+
+<body class=home-body>
+  <button class="loginButton" onclick="document.getElementById('login').style.display='block'">Đăng nhập</button>
+  <button class="signupButton" onclick="document.getElementById('signup').style.display='block'">Đăng kí</button>
+  <center><img src="/img/538637.png" width="640" height="162.5" /></center>
+  <div id="authen">
+    <% if (authenMessage.length > 0) { %>
+      <script language="javascript">
+        alert("<%= authenMessage %>");
+      </script>
+      <% } %>
+  </div>
+
+  <div id="login" class="modal">
+    <form class="modal-content animate" action="/login" method="post">
+      <div class="container">
+        <label><b>Tên đăng nhập</b></label>
+        <input type="text" placeholder="Nhập tên đăng nhập" name="username" required>
+        <label><b>Mật khẩu</b></label>
+        <input type="password" placeholder="Nhập mật khẩu" name="password" required>
+        <input type="checkbox" checked="checked"> Nhớ mật khẩu<br>
+        <button type="submit" class="submitBtn">Đăng nhập</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="signup" class="modal">
+    <form class="modal-content animate" action="/signup" method="post">
+      <div class="container">
+        <label><b>Tên đăng nhập</b></label>
+        <input type="text" placeholder="Nhập tên đăng nhập" name="username" required>
+        <label><b>Mật khẩu</b></label>
+        <input type="password" placeholder="Nhập mật khẩu" name="password" required>
+        <label><b>Nhập lại mật khẩu</b></label>
+        <input type="password" placeholder="Nhập lại mật khẩu" name="password-repeat" required>
+        <div class="clearfix">
+          <input type="checkbox" checked="checked"> Nhớ mật khẩu<br>
+          <button type="submit" class="submitBtn">Đăng kí</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="reflink">
+    <a target="_blank" href="https://www.microsoft.com/vi-vn/store/b/home"><button style="left:1085px;top:10px;"><img src="/img/window.png"></button></a>
+    <a target="_blank" href="https://www.apple.com/itunes/"><button style="left:1025px;top:10px;"><img src="/img/appstore.png"></button></a>
+    <a target="_blank" href="https://play.google.com/store"><button style="left:965px;top:10px;"><img src="/img/chplay.png"></button></a>
+  </div>
+
+  <div class="gameButton">
+    <button id="co_up" onclick="gameNotAvaivable()" style="left:250px; top: 110px;"><img src= "/img/co_up.png"></button>
+    <button id="tlmn_dem_la" onclick="gameNotAvaivable()" style="left:425px; top: 110px;"><img src= "/img/TLMN_dem_la.png"></button>
+    <button id="sam" onclick="gameNotAvaivable()" style="left:600px; top: 110px;"><img src= "/img/sam.png"></button>
+    <button id="poker" onclick="gameNotAvaivable()" style="left:775px; top: 110px;"><img src= "/img/poker.png"></button>
+    <button id="lieng" onclick="gameNotAvaivable()" style="left:950px; top: 110px;"><img src= "/img/lieng.png"></button>
+    <button id="co_tuong" onclick="gameNotAvaivable()" style="left:250px; top: 300px;"><img src= "/img/co_tuong.png"></button>
+    <button id="tien_len_mien_nam" onclick="gameNotAvaivable()" style="left:425px; top: 300px;"><img src= "/img/TLMN.png"></button>
+    <button id="phom" onclick="gameNotAvaivable()" style="left:600px; top: 300px;"><img src= "/img/phom.png"></button>
+    <button id="mau_binh" onclick="gameNotAvaivable()" style="left:775px; top: 300px;"><img src= "/img/mau_binh.png"></button>
+    <button id="xi_dach" style="left:950px; top: 300px;"><img src= "/img/xi_dach.png"></button>
+  </div>
+
+  <div class="ho-tro">
+    <div class="dropdown">
+      <button class="dropbtn" style="width:60px; height:60px;"><img src="/img/pointing_triangle.png" ></button>
+      <div class="dropdown-content">
+        <button onclick="document.getElementById('contract_form').style.display='block'"><img src="/img/phone.png"></button>
+        <button onclick="window.open('https://bigkool.net/tong-hop-cac-huong-dan-trong-game-bai-bigkool-online/')" style=""><img src="/img/huong_dan.png"></button>
+        <button onclick="window.open('https://bigkool.net/danh-muc/kinh-nghiem/')"><img src="/img/luat_choi.png"></button>
+      </div>
+    </div>
+    <div id="contract_form" class="modal">
+      <form class="modal-content animate" style="width: 50%">
+        <div id="contract">
+          <img src="/img/ho_tro.png" style="width:255px;height:55px;margin-left:40px;">
+          <div style="padding-left:100px;font-size:20px;">
+            <br>
+            <h4>Mọi thắc mắc xin hãy liên hệ</h4>
+            <div style="width: 100%;">
+              <div class="row">
+                <div class="col-sm-3"><span class="pull-left">Hỗ trợ:</span></div>
+                <div class="col-sm-4"><span class="pull-left" style="color: rgb(255,240,3);">197</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3"><span class="pull-left">Email:</span></div>
+                <div class="col-sm-4"><span class="pull-left">Da2Team@gmail.com</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3"><span class="pull-left">Facebook:</span></div>
+                <div class="col-sm-4"><span class="pull-left"><a target="_blank" href="https://goo.gl/LWEyuh">DA2Team</a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="tin-tuc" class="news-container">
+    <div class="menu">
+      <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li><a href="/">TRANG CHỦ</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">GAME BÀI <span class="caret"></span></a>
+              <ul class="dropdown-menu guide">
+                <li><a>Tiến lên miền nam</a></li>
+                <li><a>Tiến lên miền nam đếm lá</a></li>
+                <li><a>Phỏm tá lả</a></li>
+                <li><a>Mậu binh</a></li>
+                <li><a>Liêng</a></li>
+                <li><a>Poker</a></li>
+                <li><a>Xâm lốc</a></li>
+                <li><a>Ba cây</a></li>
+                <li><a>Xì Tố</a></li>
+                <li><a>Xì Dách</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">GAME CỜ <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Cờ tướng</a></li>
+                <li><a href="#">Cờ úp</a></li>
+              </ul>
+            </li>
+            <li><a target="_blank" href="https://bigkool.net/danh-muc/kinh-nghiem/">HƯỚNG DẪN</a></li>
+            <li><a target="_blank" href="https://bigkool.net/ho-tro-nguoi-choi-bigkool/">HỖ TRỢ</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div id="noi-dung">
+      <div class="game-img">
+        <img src="/img/TLMN.png" style="margin-left:0px;">
+        <h1 style="color: #fff; margin-top: 15px; margin-bottom: 10px;">Game đánh bài</h1>
+        <div>
+          <a class="fa fa-google"></a>
+          <a class="fa fa-facebook"></a>
+          <a class="fa fa-twitter"></a>
+        </div>
+        <div style="padding-top: 10px;">
+          <img src="/img/game_facebook.png">
+          <img src="/img/app_store.png">
+          <img src="/img/google_play.png">
+          <img src="/img/windows_store.png">
+        </div>
+      </div>
+      <div id="text">
+        <h3>Giới Thiệu</h3>
+        <p>Trang web chơi game online giải trí, game chơi bài trực tuyến với lượng người chơi đông đảo nhất trong thể loại game đánh bài. Hệ thống game bao gồm nhiều trò chơi dân gian truyền thống và hiện đại như: Tiến lên miền nam, tiến lên đếm lá ,Phỏm,
+          Sâm, Mậu binh, Xì tố, Xì Dzách, Poker Texas, game cờ tướng, Cờ úp trực tuyến trên máy tính và di động …</p>
+        <h3>Tính năng trong game</h3>
+        <p style="padding-left: 30px;">&#8226; <strong>Bảng xếp hạng</strong> đa dạng, chi tiết, hệ thống huân chương lung linh vinh danh game thủ qua các trình độ khác nhau, đây là một đặc điểm khá thú vị và không phải game đánh bài nào cũng có.</p>
+        <p style="padding-left: 30px;">&#8226; <strong>Hệ thống huân chương</strong> đẹp tuyệt vời với nhiều cấp độ giúp dễ dàng phân biệt trình độ các game thủ. Ngoài ra, bảng xếp hạng của từng game thủ trong mỗi trò chơi rất phong phú, chi tiết và ấn tượng.</p>
+        <p style="padding-left: 30px;">&#8226; <strong>Đồ họa tuyệt đẹp</strong> mang phong cách hiện đại, trẻ trung và độc đáo, bố cục game chặt chẽ, dễ dàng cho bạn chọn trò chơi, phòng chơi và bàn chơi mà mình yêu thích, có được điều đó là nhờ sự suy nghĩ, phân tích, đầu tư trí
+          tuệ không biết mệt mỏi của đội ngũ làm game.</p>
+        <p style="padding-left: 30px;">&#8226; <strong>Chơi trên đa nền tảng</strong> iphone, ipad, android, máy tính bảng, window phone tất cả đều được chúng tôi hỗ trợ, bạn muốn tải game cho dòng máy nào hãy truy cập trang chủ từ máy điện thoại để tải nhé.</p>
+      </div>
+    </div>
+  </div>
+  <div id="backtotop">
+    <img id="scrollBtn" src="/img/back_to_top.png">
+  </div>
+</body>
+
+</html>
